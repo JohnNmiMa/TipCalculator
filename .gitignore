@@ -1,0 +1,10 @@
+
+*.feature~
+
+*.py~
+
+*.swo
+
+*.swp
+
+*.html~

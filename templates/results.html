@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="results">
+        {% if formdata %}
+            {% if error != "" %}
+            <p>{{ error }}</p>
+            {% elif formdata['meal_cost']|float < 0 %}
+                <p>Please enter a non negative value for the meal cost</p>
+            {% elif formdata['tip_percentage']|float < 0 %}
+                <p>Please enter a non negative value for the tip percentage</p>
+            {% else %}
+                <p>Cost of meal: ${{ formdata['meal_cost'] }}</p>
+                <p>Tip percentage: {{ formdata['tip_percentage'] }}%</p>
+                <p id="tip">Tip = ${{ formdata['meal_cost']|float * formdata['tip_percentage']|float / 100 }}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
